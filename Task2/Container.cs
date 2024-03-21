@@ -1,4 +1,6 @@
-﻿namespace Task2
+﻿using System;
+
+namespace Task2
 {
     public abstract class Container
     {
@@ -21,9 +23,14 @@
 
         public abstract void LoadCargo(double mass);
         public abstract void EmptyCargo();
-        private static string GenerateSerialNumber(string type) {
-            //implementation of generation of unique number for each container [ids have to be unique]
-            return "some string";
+
+        private static int containerCount = 1;
+
+        protected static string GenerateSerialNumber(string type)
+        {
+            string serial = $"KON-{type}-C-{containerCount}";
+            containerCount++;
+            return serial;
         }
     }
 }
